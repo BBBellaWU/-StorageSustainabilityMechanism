@@ -4,7 +4,8 @@ Experiment on users of number 1600 and 4800
 
 
 import numpy as np
-
+from scipy import stats
+# 设置random_state时，每次生成的随机数一样。不设置或为None时，多次生成的随机数不一样
 
 def FTET_Sim(num_of_users, given_seed=0):
     # FTET mechanism and simultaneous proposing
@@ -15,6 +16,7 @@ def FTET_Sim(num_of_users, given_seed=0):
     """new"""
     np.random.seed(given_seed)
 
+    
     if num_of_users == 1600:
         return np.random.uniform(low=50, high=106 + 1, size=(num_of_users,))
     elif num_of_users == 2400:
