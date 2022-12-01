@@ -142,7 +142,7 @@ class Blockchain:
         """Other stuffs"""
         self.current_social_welfare = 0
         self.transaction_number = len(fees1) + len(fees2)
-        self.transaction_pool1 = fee_sort(fees1)
+        self.transaction_pool1 = fee_sort(fees1(1:len(fees1)/2))
         self.transaction_pool2 = fees2
         """the MODE can be FTET or CURRENT"""
         self.MODE = mode
@@ -152,7 +152,7 @@ class Blockchain:
     def add_block_by_mining(self, lock):
         index = self.blocks[-1].index + 1
         previous_hash = self.blocks[-1].get_block_hash()
-        if self.PROPOSE == "NSIM" and index == 6:
+        if self.PROPOSE == "NSIM" and index == 3:#对应6和9
             self.transaction_pool1 = fee_sort(self.transaction_pool1 + self.transaction_pool2)
             self.transaction_pool2 = []    # de-reference to start garbage collection, to safe memory
         """
