@@ -14,23 +14,41 @@ def FTET_Sim(num_of_users, given_seed=0):
     """
 
     """new"""
-    np.random.seed(given_seed)
-
+    #np.random.seed(given_seed)
+    sample = stats.poisson.rvs(mu=200, size=10)
+    list1 = []
+    list2 = []
+    for i in range(10):
+        num = 0
+        for j in range(sample[i]):
+            if num <= sample[i]/2:
+                list1.append(1)
+                num +=1
+            else:
+                list1.append(0)
+                num+=1
+        list2.append(list1)
+        list1 = []
     
     if num_of_users == 1600:
-        return np.random.uniform(low=50, high=106 + 1, size=(num_of_users,))
+        #return np.random.uniform(low=50, high=106 + 1, size=(num_of_users,))
+        return list2
     elif num_of_users == 2400:
         distribution = np.random.rand(num_of_users)
-        return np.random.uniform(low=50, high=115.02 + 1, size=(np.count_nonzero(distribution <= 0.673),))
+        #return np.random.uniform(low=50, high=115.02 + 1, size=(np.count_nonzero(distribution <= 0.673),))
+        return list2
     elif num_of_users == 3200:
         distribution = np.random.rand(num_of_users)
-        return np.random.uniform(low=50, high=114.90 + 1, size=(np.count_nonzero(distribution <= 0.506),))
+        #return np.random.uniform(low=50, high=114.90 + 1, size=(np.count_nonzero(distribution <= 0.506),))
+        return list2
     elif num_of_users == 4000:
         distribution = np.random.rand(num_of_users)
-        return np.random.uniform(low=50, high=114.84 + 1, size=(np.count_nonzero(distribution <= 0.405),))
+        #return np.random.uniform(low=50, high=114.84 + 1, size=(np.count_nonzero(distribution <= 0.405),))
+        return list2
     elif num_of_users == 4800:
         distribution = np.random.rand(num_of_users)
-        return np.random.uniform(low=50, high=114.80 + 1, size=(np.count_nonzero(distribution <= 0.338),))
+        #return np.random.uniform(low=50, high=114.80 + 1, size=(np.count_nonzero(distribution <= 0.338),))
+        return list2
 
 
 def FTET_Nonsim(num_of_users, given_seed=0):
